@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#102f3b">
+<meta name="description" content="Learn about AfyaSmart AI, a proposed digital platform for preliminary health guidance, symptom awareness and health education.">
+<title>About AfyaSmart AI | Project Overview</title>
+<style>
+:root{
+  --navy:#102f3b;--navy2:#173f4b;--teal:#087f80;--teal2:#e8f4f2;
+  --ink:#24383e;--muted:#64777c;--line:#dce6e7;--bg:#f5f8f8;--white:#fff;
+  --gold:#d5a64b;--shadow:0 16px 45px rgba(16,47,59,.08)
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{font-family:Inter,"Segoe UI",Arial,sans-serif;color:var(--ink);line-height:1.7;background:#fff}
+a{color:inherit}
+.container{width:min(1140px,90%);margin:auto}
+.topline{background:var(--navy);color:#d7e5e7;font-size:11px;letter-spacing:.4px;padding:8px 0}
+.topline .container{display:flex;justify-content:space-between;gap:12px}
+header{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.97);border-bottom:1px solid var(--line);backdrop-filter:blur(10px)}
+.nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{display:flex;align-items:center;gap:11px;text-decoration:none}
+.mark{width:42px;height:42px;background:var(--teal);color:#fff;border-radius:10px;display:grid;place-items:center;font-size:27px;font-weight:400}
+.brand strong{display:block;color:var(--navy);font-size:20px;line-height:1.15;letter-spacing:-.5px}
+.brand strong span{color:var(--teal)}
+.brand small{display:block;color:var(--muted);font-size:9px;letter-spacing:1.2px;text-transform:uppercase;margin-top:4px}
+nav{display:flex;align-items:center;gap:23px}
+nav a{text-decoration:none;color:#42565c;font-size:12px;font-weight:700}
+nav a:hover{color:var(--teal)}
+.language-control{display:inline-flex;align-items:center;gap:5px;padding:4px 7px;border:1px solid #bfe9e4;border-radius:20px;background:linear-gradient(135deg,#e7fbf7,#eef3ff);color:#087f78;font-size:11px;font-weight:800;white-space:nowrap}
+.language-control select{max-width:105px;border:0;border-radius:14px;padding:5px 7px;background:#087f78;color:#fff;font:inherit;font-size:11px;font-weight:800;cursor:pointer;outline-offset:2px}
+.language-control select:hover{background:#075e70}
+@media(max-width:650px){.language-control{justify-content:center;padding:3px 6px}.language-control select{max-width:95px;padding:5px 6px}.nav{gap:8px}}
+.navbutton,.button{display:inline-flex;align-items:center;justify-content:center;background:var(--teal);color:#fff;border:1px solid var(--teal);border-radius:5px;padding:11px 17px;text-decoration:none;font-size:12px;font-weight:750;cursor:pointer}
+.navbutton:hover,.button:hover{background:#06696b}
+.menu{display:none;background:white;border:1px solid var(--line);padding:8px 11px;border-radius:5px;font-size:19px}
+.hero{background:linear-gradient(120deg,#f0f7f6,#f7faf9 65%,#e8f2f0);padding:75px 0 65px}
+.eyebrow{color:var(--teal);font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;margin-bottom:13px}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;align-items:center;gap:55px}
+h1{font-size:clamp(37px,5vw,56px);line-height:1.1;letter-spacing:-1.8px;color:var(--navy);max-width:720px}
+h1 span{color:var(--teal)}
+.lead{color:#5d7177;font-size:16px;max-width:650px;margin:20px 0 26px}
+.hero-actions{display:flex;gap:11px;flex-wrap:wrap}
+.button.secondary{background:transparent;color:var(--navy);border-color:#aabdc0}
+.hero-note{font-size:11px;color:var(--muted);margin-top:22px}
+.hero-card{background:var(--navy);color:white;padding:30px;border-radius:12px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.hero-card:after{content:"+";position:absolute;right:17px;top:-45px;color:rgba(255,255,255,.08);font-size:210px;font-weight:200}
+.hero-card>*{position:relative;z-index:1}
+.hero-card .tag{color:#a9d9d3;font-size:10px;text-transform:uppercase;letter-spacing:1.5px}
+.hero-card h2{font-size:25px;line-height:1.25;margin:18px 0 12px}
+.hero-card p{color:#c5d8db;font-size:13px}
+.hero-card ul{list-style:none;margin-top:22px}
+.hero-card li{padding:10px 0;border-top:1px solid #ffffff25;color:#e2eeee;font-size:12px}
+.hero-card li:before{content:"✓";color:#8bd5c8;font-weight:bold;margin-right:10px}
+.quicknav{border-bottom:1px solid var(--line);background:white}
+.quicknav .container{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:10px 22px;overflow-x:visible;padding:12px 0}
+.quicknav a{white-space:nowrap;text-decoration:none;font-size:11px;font-weight:750;color:#60747a}
+.quicknav a:hover{color:var(--teal)}
+section{padding:75px 0}
+.section-title{max-width:700px;margin-bottom:35px}
+.section-title.center{text-align:center;margin:0 auto 40px}
+h2{color:var(--navy);font-size:clamp(27px,3.4vw,37px);line-height:1.2;letter-spacing:-.7px}
+.section-title p{color:var(--muted);font-size:14px;margin-top:12px}
+.copy{color:var(--muted);font-size:14px}
+.copy p+p{margin-top:13px}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.callout{background:var(--teal2);border-left:4px solid var(--teal);padding:23px;border-radius:0 8px 8px 0}
+.callout strong{color:var(--navy);display:block;margin-bottom:7px}
+.callout p{color:#587075;font-size:13px}
+.problem{background:var(--bg)}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}
+.card{background:white;border:1px solid var(--line);border-radius:9px;padding:23px}
+.card .num{font-size:10px;color:var(--teal);font-weight:850;letter-spacing:1.4px}
+.card h3{color:var(--navy);font-size:16px;margin:12px 0 7px}
+.card p{font-size:12px;color:var(--muted)}
+.solution-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:45px;align-items:center}
+.solution-panel{background:var(--navy);color:white;border-radius:12px;padding:32px}
+.solution-panel .cross{font-size:48px;color:#8dd8cc;line-height:1}
+.solution-panel h3{font-size:24px;line-height:1.25;margin:20px 0 10px}
+.solution-panel p{font-size:13px;color:#c5d8db}
+.feature-list{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.feature{border-bottom:1px solid var(--line);padding:0 0 16px}
+.feature h3{font-size:14px;color:var(--navy);margin-bottom:5px}
+.feature p{font-size:12px;color:var(--muted)}
+.steps{background:var(--bg)}
+.step-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}
+.step{background:#fff;border:1px solid var(--line);border-radius:8px;padding:22px}
+.step b{width:32px;height:32px;border-radius:50%;background:var(--teal2);color:var(--teal);display:grid;place-items:center;font-size:13px}
+.step h3{font-size:14px;color:var(--navy);margin:14px 0 6px}
+.step p{font-size:12px;color:var(--muted)}
+.objectives{display:grid;grid-template-columns:1fr 1fr;gap:35px}
+.objectives ul{list-style:none}
+.objectives li{padding:11px 0;border-bottom:1px solid var(--line);font-size:13px;color:#52686e}
+.objectives li:before{content:"✓";color:var(--teal);font-weight:900;margin-right:10px}
+.audience{background:var(--bg)}
+.audience-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.audience-item{background:#fff;border:1px solid var(--line);padding:20px;border-radius:8px}
+.audience-item h3{font-size:14px;color:var(--navy);margin-bottom:5px}
+.audience-item p{font-size:12px;color:var(--muted)}
+.benefits{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.benefit{padding:22px;border:1px solid var(--line);border-radius:8px}
+.benefit h3{color:var(--navy);font-size:15px;margin-bottom:7px}
+.benefit p{font-size:12px;color:var(--muted)}
+.safety{background:#fff8e9;border:1px solid #f0dfb8;border-radius:9px;padding:25px}
+.safety h3{color:#785414;margin-bottom:9px}
+.safety p,.safety li{font-size:12px;color:#705f3d}
+.safety ul{padding-left:19px;margin-top:9px}
+.future{background:var(--navy);color:white}
+.future h2{color:white}
+.future .section-title p{color:#c0d4d7}
+.future-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.future-item{border:1px solid #ffffff28;border-radius:8px;padding:20px}
+.future-item h3{font-size:14px;color:#a8e0d6;margin-bottom:7px}
+.future-item p{font-size:12px;color:#c4d7da}
+.faq-list{max-width:850px;margin:auto}
+details{border-bottom:1px solid var(--line);padding:17px 0}
+summary{cursor:pointer;color:var(--navy);font-size:14px;font-weight:750}
+details p{color:var(--muted);font-size:13px;margin-top:10px}
+footer{background:#0b2731;color:#d2e0e2;padding:35px 0 20px}
+.footer-row{display:flex;justify-content:space-between;gap:25px;align-items:center;padding-bottom:22px}
+footer .brand strong{color:white}
+footer .brand small{color:#a7bdc1}
+footer p{font-size:11px;color:#a9bec2;max-width:480px;margin-top:12px}
+.footer-links{display:flex;gap:18px;flex-wrap:wrap}
+.footer-links a{font-size:11px;color:#d2e0e2;text-decoration:none}
+.copyright{border-top:1px solid #29434b;padding-top:17px;font-size:10px;color:#91a9ae;display:flex;justify-content:space-between;gap:15px}
+@media(max-width:850px){
+ nav{gap:12px}nav a{font-size:11px}.hero-grid,.solution-grid{grid-template-columns:1fr}.hero-card{max-width:580px}
+ .cards{grid-template-columns:repeat(2,1fr)}.step-grid{grid-template-columns:repeat(2,1fr)}
+ .audience-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:650px){
+ .topline .container{justify-content:center}.topline span:last-child{display:none}
+ .menu{display:block}nav{display:none;position:absolute;top:76px;left:0;right:0;background:#fff;padding:18px 5%;border-bottom:1px solid var(--line);align-items:stretch;flex-direction:column}
+ nav.open{display:flex}nav a{font-size:13px;padding:5px 0}
+ .hero{padding:55px 0}.two-col,.objectives{grid-template-columns:1fr;gap:25px}
+ section{padding:58px 0}.cards,.benefits,.future-grid{grid-template-columns:1fr}
+ .feature-list{grid-template-columns:1fr}.footer-row,.copyright{align-items:flex-start;flex-direction:column}
+}
+@media(max-width:420px){.step-grid,.audience-grid{grid-template-columns:1fr}.hero-actions .button{width:100%}}
+
+/* WHOLE-PAGE COMPACT + COLOURFUL DESIGN */
+:root{
+ --navy:#183b66;--navy2:#24558a;--teal:#079b91;--teal2:#e4f8f4;
+ --ink:#30445a;--muted:#687b8e;--line:#dce8f2;--bg:#f3f8fd;--white:#fff;
+ --gold:#f2b544;--shadow:0 9px 24px rgba(24,59,102,.09)
+}
+body{font-size:14px;line-height:1.58;background:#fbfdff}
+.container{width:min(1060px,91%)}
+.topline{background:linear-gradient(90deg,#183b66,#087f91,#159b83);padding:5px 0;font-size:10px}
+.nav{height:62px;gap:13px}
+.mark{width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,#079b91,#2786c7);font-size:22px}
+.brand{gap:8px}
+.brand strong{font-size:17px}
+.brand small{font-size:8px;margin-top:2px}
+nav{gap:14px}
+nav a{font-size:11px}
+.navbutton,.button{padding:8px 12px;border-radius:7px;font-size:11px;background:linear-gradient(120deg,#078f91,#237fc1);border-color:transparent}
+.hero{padding:48px 0 42px;background:linear-gradient(120deg,#e8f7ff 0%,#f2fbf8 48%,#fff5e8 100%)}
+.hero-grid{gap:35px}
+.eyebrow{display:inline-block;background:#e1f6f1;color:#078579;padding:4px 9px;border-radius:20px;font-size:9px;letter-spacing:1.2px;margin-bottom:9px}
+h1{font-size:clamp(29px,4vw,44px);letter-spacing:-1.2px;line-height:1.12}
+.lead{font-size:14px;margin:13px 0 18px;max-width:590px}
+.hero-note{font-size:10px;margin-top:15px}
+.hero-card{padding:22px;border-radius:13px;background:linear-gradient(145deg,#183b66,#176f83 75%,#159b83)}
+.hero-card h2{font-size:21px;margin:12px 0 8px}
+.hero-card p,.hero-card li{font-size:11px}
+.hero-card ul{margin-top:14px}
+.hero-card li{padding:7px 0}
+.quicknav .container{gap:18px;padding:10px 0}
+.quicknav a{font-size:10px}
+section{padding:48px 0}
+.section-title{margin-bottom:24px}
+.section-title.center{margin-bottom:27px}
+h2{font-size:clamp(23px,3vw,31px)}
+.section-title p,.copy{font-size:12px}
+.section-title p{margin-top:8px}
+.copy p+p{margin-top:10px}
+.two-col{gap:32px}
+.callout{padding:17px;border-radius:0 9px 9px 0;background:linear-gradient(135deg,#e4f8f4,#eaf3ff);border-left-color:#079b91}
+.callout p{font-size:11px}
+.cards{gap:12px}
+.card{padding:17px;border-radius:10px;box-shadow:0 4px 13px rgba(24,59,102,.045);border-top:3px solid #19a89b}
+.card:nth-child(3n+2){border-top-color:#f0ad3d}
+.card:nth-child(3n){border-top-color:#568bd5}
+.card .num{font-size:9px}
+.card h3{font-size:14px;margin:8px 0 5px}
+.card p{font-size:11px}
+.solution-grid{gap:32px}
+.solution-panel{padding:24px;border-radius:13px;background:linear-gradient(145deg,#183b66,#087f91)}
+.solution-panel .cross{font-size:39px}
+.solution-panel h3{font-size:21px;margin:13px 0 8px}
+.solution-panel p{font-size:11px}
+.feature-list{gap:14px}
+.feature{padding-bottom:11px;border-bottom-color:#d6e8ed}
+.feature h3{font-size:12px}
+.feature p{font-size:11px}
+.step-grid{gap:11px}
+.step{padding:17px;border-radius:10px;border-top:3px solid #079b91}
+.step:nth-child(2){border-top-color:#f0ad3d}
+.step:nth-child(3){border-top-color:#568bd5}
+.step:nth-child(4){border-top-color:#a47acb}
+.step b{width:27px;height:27px;font-size:11px;background:#e1f6f1;color:#078579}
+.step:nth-child(2) b{background:#fff2d9;color:#a96a08}
+.step:nth-child(3) b{background:#e8f0ff;color:#356eb4}
+.step:nth-child(4) b{background:#f2eaff;color:#8052aa}
+.step h3{font-size:12px;margin:10px 0 5px}
+.step p{font-size:11px}
+.objectives{gap:27px}
+.objectives li{padding:8px 0;font-size:11px}
+.audience-grid{gap:11px}
+.audience-item{padding:16px;border-radius:10px;border-bottom:3px solid #079b91}
+.audience-item:nth-child(4n+2){border-bottom-color:#f0ad3d}
+.audience-item:nth-child(4n+3){border-bottom-color:#568bd5}
+.audience-item:nth-child(4n){border-bottom-color:#a47acb}
+.audience-item h3{font-size:12px}
+.audience-item p{font-size:11px}
+.benefits{gap:12px}
+.benefit{padding:17px;border-radius:10px;background:#f7fbff}
+.benefit:nth-child(3n+1){background:#effaf7;border-color:#d5eee7}
+.benefit:nth-child(3n+2){background:#fff8eb;border-color:#f5e6c7}
+.benefit:nth-child(3n){background:#f1f5ff;border-color:#dce5fb}
+.benefit h3{font-size:13px;margin-bottom:5px}
+.benefit p{font-size:11px}
+.safety{padding:19px;border-radius:10px}
+.safety h3{font-size:14px}
+.safety p,.safety li{font-size:11px}
+.future{background:linear-gradient(115deg,#183b66,#155f78 65%,#087f80)}
+.future-grid{gap:12px}
+.future-item{padding:16px;border-radius:10px;background:#ffffff0b}
+.future-item h3{font-size:12px}
+.future-item p{font-size:11px}
+.faq-list{max-width:790px}
+details{padding:12px 0}
+summary{font-size:12px}
+details p{font-size:11px;margin-top:7px}
+footer{padding:27px 0 16px;background:#122f50}
+.footer-row{gap:18px;padding-bottom:17px}
+footer p,.footer-links a{font-size:10px}
+.copyright{padding-top:13px;font-size:9px}
+@media(max-width:850px){
+ .nav{height:auto;min-height:62px;flex-wrap:wrap;padding:9px 0}
+ nav{gap:10px;flex-wrap:wrap}
+ .hero-grid,.solution-grid{gap:22px}
+}
+@media(max-width:650px){
+ .nav{min-height:62px}
+ nav{top:62px;padding:14px 5%;gap:7px}
+ nav a{font-size:12px;padding:4px 0}
+ .hero{padding:37px 0}
+ section{padding:37px 0}
+ .section-title.center{margin-bottom:21px}
+ .two-col,.objectives{gap:18px}
+ .card,.step,.audience-item,.benefit{padding:15px}
+}
+
+
+/* Quick navigation wraps onto extra lines instead of showing a horizontal scrollbar */
+.quicknav{overflow:visible}
+.quicknav .container{width:min(1060px,91%);max-width:100%;box-sizing:border-box}
+.quicknav a{white-space:normal;display:inline-block}
+html,body{max-width:100%;overflow-x:hidden}
+@media(max-width:650px){
+ .quicknav .container{justify-content:flex-start;gap:9px 14px;padding:10px 0}
+ .quicknav a{font-size:10px}
+}
+
+
+.manager-details{display:flex;flex-wrap:wrap;gap:5px 18px;margin-top:8px!important;color:#d8e9f4!important;font-size:11px!important}
+.manager-details span{display:inline-block}
+.manager-details a{color:#75e0d0;text-decoration:none;font-weight:800}
+.manager-details a:hover{text-decoration:underline}
+@media(max-width:650px){.manager-details{gap:5px 12px}}
+\n</style>
+</head>
+<body>
+<div class="topline"><div class="container"><span>AFYASMART AI · PROJECT INFORMATION</span><span>SMART TECHNOLOGY FOR BETTER HEALTH</span></div></div>
+<header>
+ <div class="container nav">
+  <a class="brand" href="#top"><div class="mark">+</div><div><strong>AfyaSmart <span>AI</span></strong><small>Digital Health Guidance</small></div></a>
+  <button class="menu" id="menu" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+  <nav id="nav">
+   <a href="#overview">Overview</a><a href="#problem">Problem</a><a href="#solution">Solution</a><a href="#features">Features</a><a href="#how">How it works</a><a href="#safety">Safety</a>
+   <label class="language-control" for="languageSelect"><span id="languageLabel">Language</span>
+    <select id="languageSelect" aria-label="Choose website language">
+     <option value="en">English</option>
+     <option value="sw">Kiswahili</option>
+    </select>
+   </label>
+   <a class="navbutton" href="#contact">Project summary</a>
+  </nav>
+ </div>
+</header>
+
+<main id="top">
+<section class="hero">
+ <div class="container hero-grid">
+  <div>
+   <div class="eyebrow">Understanding the project</div>
+   <h1>AfyaSmart AI: <span>Smarter access to health information.</span></h1>
+   <p class="lead">An AI-powered digital system for preliminary health guidance. AfyaSmart aims to help people describe health concerns, explore reliable general information and understand when to seek professional medical care.</p>
+   <div class="hero-actions"><a class="button" href="#overview">Explore the project ↓</a><a class="button secondary" href="#features">View key features</a></div>
+   <p class="hero-note">Project concept and prototype overview · Tanzania</p>
+  </div>
+  <aside class="hero-card">
+   <div class="tag">The AfyaSmart approach</div>
+   <h2>Right information at the right time.</h2>
+   <p>Make the first step towards understanding a health concern clearer, more accessible and more informed.</p>
+   <ul><li>Report symptoms and concerns</li><li>Receive preliminary educational guidance</li><li>Recognise warning signs and seek care</li></ul>
+  </aside>
+ </div>
+</section>
+
+<div class="quicknav"><div class="container">
+ <a href="#overview">Project overview</a><a href="#problem">The problem</a><a href="#solution">Our solution</a><a href="#objectives">Objectives</a><a href="#features">Main features</a><a href="#audience">Target users</a><a href="#benefits">Expected benefits</a><a href="#future">Future development</a>
+</div></div>
+
+<section id="overview">
+ <div class="container">
+  <div class="section-title"><div class="eyebrow">01 · Project overview</div><h2>What is AfyaSmart AI?</h2><p>A digital health guidance concept designed to improve access to preliminary health information.</p></div>
+  <div class="two-col">
+   <div class="copy">
+    <p><strong>AfyaSmart AI</strong> is a proposed digital system that uses Artificial Intelligence to support the delivery of preliminary health guidance. It is intended to give users a place to report symptoms, answer simple follow-up questions and access general health education.</p>
+    <p>For example, a person experiencing fever, headache, cough or abdominal pain may not know whether to monitor the symptoms, contact a health professional or seek urgent care. AfyaSmart aims to help organise the information they provide and explain possible next steps in clear language.</p>
+    <p>The project focuses on accessibility, understandable information, symptom awareness and encouraging appropriate use of professional healthcare services.</p>
+   </div>
+   <div class="callout"><strong>Project identity</strong><p><b>Project title:</b> AfyaSmart AI: An AI-Powered Digital System for Preliminary Health Guidance.</p><p style="margin-top:10px"><b>Slogan:</b> “AfyaSmart AI — Smart Technology for Better Health, Right Information at the Right Time.”</p></div>
+  </div>
+ </div>
+</section>
+
+<section class="problem" id="problem">
+ <div class="container">
+  <div class="section-title center"><div class="eyebrow">02 · The challenge</div><h2>Why is AfyaSmart needed?</h2><p>People may face barriers when trying to understand health concerns and decide what to do next.</p></div>
+  <div class="cards">
+   <article class="card"><span class="num">CHALLENGE 01</span><h3>Limited access to timely information</h3><p>Some people may have difficulty finding understandable health information when a concern first appears.</p></article>
+   <article class="card"><span class="num">CHALLENGE 02</span><h3>Uncertainty about symptoms</h3><p>People may not know what information about their symptoms is important or whether they should seek care.</p></article>
+   <article class="card"><span class="num">CHALLENGE 03</span><h3>Distance and time barriers</h3><p>Travel, work, family responsibilities and distance from health facilities can make it harder to seek advice promptly.</p></article>
+   <article class="card"><span class="num">CHALLENGE 04</span><h3>Confusing health information</h3><p>Information found online may be difficult to understand or may not come from reliable sources.</p></article>
+   <article class="card"><span class="num">CHALLENGE 05</span><h3>Delayed decisions</h3><p>Without clear guidance, a person may delay contacting a qualified health worker when assessment is needed.</p></article>
+   <article class="card"><span class="num">CHALLENGE 06</span><h3>Need for health awareness</h3><p>People benefit from clear education about prevention, warning signs and appropriate healthcare options.</p></article>
+  </div>
+ </div>
+</section>
+
+<section id="solution">
+ <div class="container solution-grid">
+  <div class="solution-panel"><div class="cross">+</div><h3>A digital first step towards informed care.</h3><p>AfyaSmart brings symptom reporting, preliminary information and health education together in one proposed platform.</p></div>
+  <div>
+   <div class="eyebrow">03 · Proposed solution</div><h2>How AfyaSmart responds to the challenge</h2>
+   <p class="copy" style="margin:15px 0 23px">The platform is designed to guide users through a simple information process. It collects the details a user chooses to provide, presents general educational guidance and encourages professional assessment whenever appropriate.</p>
+   <div class="feature-list">
+    <div class="feature"><h3>Easy symptom reporting</h3><p>Users can select symptoms and describe their concerns.</p></div>
+    <div class="feature"><h3>Preliminary guidance</h3><p>Users can review general information based on their responses.</p></div>
+    <div class="feature"><h3>Warning-sign awareness</h3><p>The system highlights selected signs that need urgent attention.</p></div>
+    <div class="feature"><h3>Health education</h3><p>Users can explore basic information about health and prevention.</p></div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section class="steps" id="how">
+ <div class="container">
+  <div class="section-title center"><div class="eyebrow">04 · User journey</div><h2>How the system is intended to work</h2><p>A simple process from reporting a concern to considering the next step.</p></div>
+  <div class="step-grid">
+   <article class="step"><b>1</b><h3>Open AfyaSmart</h3><p>The user visits the website using a phone, tablet or computer.</p></article>
+   <article class="step"><b>2</b><h3>Enter information</h3><p>The user reports age, symptoms, duration and how severe they feel.</p></article>
+   <article class="step"><b>3</b><h3>Review guidance</h3><p>The system presents preliminary educational information and safety advice based on the information entered.</p></article>
+   <article class="step"><b>4</b><h3>Choose an appropriate next step</h3><p>The user is encouraged to contact a qualified health professional or seek urgent care when needed.</p></article>
+  </div>
+ </div>
+</section>
+
+<section id="objectives">
+ <div class="container">
+  <div class="section-title"><div class="eyebrow">05 · Project direction</div><h2>Main aim and objectives</h2><p>What the AfyaSmart project intends to achieve.</p></div>
+  <div class="objectives">
+   <div class="copy"><h3 style="color:var(--navy);margin-bottom:10px">Main aim</h3><p>To develop a digital system powered by Artificial Intelligence that provides preliminary health guidance and helps users access understandable health information and make informed decisions about seeking medical care.</p></div>
+   <ul>
+    <li>Provide a convenient way for users to report common symptoms.</li>
+    <li>Present clear preliminary health information based on user-provided details.</li>
+    <li>Promote awareness of warning signs that may require urgent medical attention.</li>
+    <li>Improve access to general health education and prevention information.</li>
+    <li>Encourage timely consultation with qualified healthcare professionals.</li>
+   </ul>
+  </div>
+ </div>
+</section>
+
+<section class="problem" id="features">
+ <div class="container">
+  <div class="section-title center"><div class="eyebrow">06 · Platform capabilities</div><h2>Key features of AfyaSmart AI</h2><p>The following features describe the proposed platform and its intended functions.</p></div>
+  <div class="cards">
+   <article class="card"><span class="num">FEATURE 01</span><h3>AI health guidance</h3><p>Provide preliminary educational guidance using information supplied by the user, subject to appropriate clinical review and validation.</p></article>
+   <article class="card"><span class="num">FEATURE 02</span><h3>Symptom checker</h3><p>Allow users to select symptoms, indicate duration and describe severity.</p></article>
+   <article class="card"><span class="num">FEATURE 03</span><h3>Emergency awareness</h3><p>Draw attention to warning signs and direct users towards urgent medical help.</p></article>
+   <article class="card"><span class="num">FEATURE 04</span><h3>Health education</h3><p>Share understandable general information about health topics and common concerns.</p></article>
+   <article class="card"><span class="num">FEATURE 05</span><h3>Disease prevention</h3><p>Provide educational material about hygiene, safe water, nutrition, vaccination and healthy habits.</p></article>
+   <article class="card"><span class="num">FEATURE 06</span><h3>Healthcare direction</h3><p>Encourage users to seek the appropriate professional or health facility rather than relying on the website as a diagnosis.</p></article>
+  </div>
+ </div>
+</section>
+
+<section id="audience">
+ <div class="container">
+  <div class="section-title center"><div class="eyebrow">07 · Who it is for</div><h2>Intended users and stakeholders</h2><p>AfyaSmart is intended to support people seeking health information and the professionals who help them.</p></div>
+  <div class="audience-grid">
+   <div class="audience-item"><h3>Community members</h3><p>People looking for understandable preliminary health information.</p></div>
+   <div class="audience-item"><h3>People far from facilities</h3><p>Individuals who may face travel or time barriers when seeking information.</p></div>
+   <div class="audience-item"><h3>Caregivers and families</h3><p>People helping a family member understand when to seek medical advice.</p></div>
+   <div class="audience-item"><h3>Healthcare professionals</h3><p>Potential partners who can help review content and guide safe implementation.</p></div>
+  </div>
+ </div>
+</section>
+
+<section class="problem" id="benefits">
+ <div class="container">
+  <div class="section-title center"><div class="eyebrow">08 · Expected value</div><h2>Expected benefits and value</h2><p>Potential benefits if the platform is properly developed, tested and implemented.</p></div>
+  <div class="benefits">
+   <article class="benefit"><h3>More accessible information</h3><p>Users may be able to explore general health information through a digital platform.</p></article>
+   <article class="benefit"><h3>Better symptom awareness</h3><p>A structured form can help users organise and communicate the symptoms they experience.</p></article>
+   <article class="benefit"><h3>Support for informed decisions</h3><p>Clear explanations may help users understand when professional advice is important.</p></article>
+   <article class="benefit"><h3>Health education</h3><p>Prevention content can encourage awareness of healthy practices.</p></article>
+   <article class="benefit"><h3>Convenient access</h3><p>A responsive website can be accessed on different devices where internet access is available.</p></article>
+   <article class="benefit"><h3>Potential to grow</h3><p>The system could be expanded after user testing, clinical review and technical development.</p></article>
+  </div>
+ </div>
+</section>
+
+<section id="safety">
+ <div class="container">
+  <div class="section-title"><div class="eyebrow">09 · Trust and responsibility</div><h2>Safety, privacy and limitations</h2><p>Health technology must be clear about what it can and cannot do.</p></div>
+  <div class="safety">
+   <h3>AfyaSmart AI is not a doctor and does not provide a confirmed diagnosis.</h3>
+   <p>The website prototype demonstrates a possible user experience. Its sample symptom guidance is not a clinically validated AI model and should not be used to make medical decisions or delay treatment.</p>
+   <ul>
+    <li>Users should seek advice from qualified healthcare professionals for medical concerns.</li>
+    <li>Possible emergency symptoms require immediate medical attention; users should not wait for a website response.</li>
+    <li>Before real-world launch, health content and triage logic need review by qualified medical professionals and appropriate testing.</li>
+    <li>Any collection of personal or health information must be protected through appropriate privacy, security and data-handling practices.</li>
+    <li>The contact form in the current demonstration does not send messages to a server.</li>
+   </ul>
+  </div>
+ </div>
+</section>
+
+<section class="future" id="future">
+ <div class="container">
+  <div class="section-title"><div class="eyebrow" style="color:#9adbd1">10 · Development roadmap</div><h2>What could come next?</h2><p>Possible future development areas. These are plans to explore, not features claimed to be live today.</p></div>
+  <div class="future-grid">
+   <article class="future-item"><h3>Clinically reviewed AI</h3><p>Develop and validate an AI guidance service with qualified healthcare professionals and reliable health references.</p></article>
+   <article class="future-item"><h3>Local language support</h3><p>Explore English and Kiswahili content to make information easier for more people to understand.</p></article>
+   <article class="future-item"><h3>Healthcare connections</h3><p>Explore verified links to health facilities and trusted healthcare information services.</p></article>
+   <article class="future-item"><h3>Secure user accounts</h3><p>If needed, develop secure accounts and privacy controls with appropriate safeguards.</p></article>
+   <article class="future-item"><h3>Mobile-friendly access</h3><p>Continue improving performance and usability on common smartphones and slower connections.</p></article>
+   <article class="future-item"><h3>Testing and evaluation</h3><p>Test usability, accuracy, safety, accessibility and usefulness before wider implementation.</p></article>
+  </div>
+ </div>
+</section>
+
+<section id="faq">
+ <div class="container">
+  <div class="section-title center"><div class="eyebrow">11 · Frequently asked questions</div><h2>Questions about AfyaSmart</h2><p>Quick explanations of the project and its purpose.</p></div>
+  <div class="faq-list">
+   <details><summary>Does AfyaSmart AI diagnose diseases?</summary><p>No. It is designed for preliminary health information and guidance. It does not confirm a disease or replace a qualified healthcare professional.</p></details>
+   <details><summary>Who can use AfyaSmart?</summary><p>The proposed platform is intended for people seeking general health information, including community members and caregivers. Appropriate safeguards and professional advice remain important, especially for children and vulnerable people.</p></details>
+   <details><summary>Can AfyaSmart replace a hospital visit?</summary><p>No. It cannot examine a patient, run tests or provide treatment. Users should seek medical care when needed, and urgent warning signs require immediate attention.</p></details>
+   <details><summary>Is the current website connected to a real AI medical system?</summary><p>No. The current page is a project information website. Any demonstration symptom checker should be treated as a prototype, not a validated medical AI service.</p></details>
+   <details><summary>What makes the project useful?</summary><p>Its intended value is bringing symptom reporting, understandable preliminary information, health education and encouragement to seek professional care into one accessible digital experience.</p></details>
+  </div>
+ </div>
+</section>
+
+<section id="contact" style="background:var(--bg)">
+ <div class="container two-col">
+  <div><div class="eyebrow">12 · Project message</div><h2>AfyaSmart AI — Smart Technology for Better Health.</h2><p class="copy" style="margin-top:15px">The goal is simple: help people access the right health information at the right time, while keeping qualified healthcare professionals at the centre of medical care.</p></div>
+  <div class="callout"><strong>Project summary</strong><p>AfyaSmart AI is a proposed AI-powered digital platform for preliminary health guidance. It aims to make health information more accessible, support symptom awareness, promote prevention education and encourage appropriate professional medical care.</p><p style="margin-top:12px"><b>Location focus:</b> Tanzania</p></div>
+ </div>
+</section>
+</main>
+
+<footer>
+ <div class="container">
+  <div class="footer-row">
+   <div><a class="brand" href="#top"><div class="mark">+</div><div><strong>AfyaSmart <span>AI</span></strong><small>Digital Health Guidance</small></div></a><p>Smart Technology for Better Health, Right Information at the Right Time.</p>
+    <p class="manager-details"><span>Managed by Catherine Daniel</span><span>CEO · Contact: <a href="tel:0672747688">0672747688</a></span></p>
+   </div>
+   <div class="footer-links"><a href="#overview">Overview</a><a href="#features">Features</a><a href="#safety">Safety</a><a href="#future">Future development</a></div>
+  </div>
+  <div class="copyright"><span>© 2026 AfyaSmart AI. All rights reserved.</span><span>Preliminary information only · Not a substitute for professional medical care.</span></div>
+ </div>
+</footer>
+<script>
+// English and Kiswahili language support. The selected language is remembered on this device.
+const translations = {"Managed by Catherine Daniel":"Inasimamiwa na Catherine Daniel","CEO · Contact: 0672747688":"Mkurugenzi Mtendaji (CEO) · Mawasiliano: 0672747688","AFYASMART AI · PROJECT INFORMATION":"AFYASMART AI · TAARIFA ZA MRADI","SMART TECHNOLOGY FOR BETTER HEALTH":"TEKNOLOJIA BORA KWA AFYA BORA","Digital Health Guidance":"Mwongozo wa Afya wa Kidijitali","Overview":"Muhtasari","Problem":"Tatizo","Solution":"Suluhisho","Features":"Vipengele","How it works":"Jinsi inavyofanya kazi","Safety":"Usalama","Project summary":"Muhtasari wa mradi","Understanding the project":"Kuuelewa mradi","Smarter access to health information.":"Upatikanaji bora wa taarifa za afya.","An AI-powered digital system for preliminary health guidance. AfyaSmart aims to help people describe health concerns, explore reliable general information and understand when to seek professional medical care.":"Mfumo wa kidijitali unaotumia Akili Unde (AI) kutoa mwongozo wa awali wa afya. AfyaSmart unalenga kuwasaidia watu kueleza changamoto za kiafya, kupata taarifa za jumla zinazoaminika na kuelewa wakati wa kutafuta huduma za kitaalamu za afya.","Explore the project ↓":"Jifunze kuhusu mradi ↓","View key features":"Tazama vipengele muhimu","Project concept and prototype overview · Tanzania":"Maelezo ya wazo na mfano wa mfumo · Tanzania","The AfyaSmart approach":"Mtazamo wa AfyaSmart","Right information at the right time.":"Taarifa sahihi kwa wakati sahihi.","Make the first step towards understanding a health concern clearer, more accessible and more informed.":"Fanya hatua ya kwanza ya kuelewa changamoto ya afya iwe rahisi, ipatikane kwa urahisi na itoe uelewa zaidi.","Report symptoms and concerns":"Eleza dalili na changamoto za kiafya","Receive preliminary educational guidance":"Pata mwongozo wa awali wa kielimu","Recognise warning signs and seek care":"Tambua dalili za hatari na tafuta huduma","Project overview":"Muhtasari wa mradi","The problem":"Tatizo","Our solution":"Suluhisho letu","Objectives":"Malengo","Main features":"Vipengele vikuu","Target users":"Watumiaji lengwa","Expected benefits":"Faida zinazotarajiwa","Future development":"Maendeleo yajayo","01 · Project overview":"01 · Muhtasari wa mradi","What is AfyaSmart AI?":"AfyaSmart AI ni nini?","A digital health guidance concept designed to improve access to preliminary health information.":"Wazo la mfumo wa kidijitali wa mwongozo wa afya linalolenga kuboresha upatikanaji wa taarifa za awali za afya.","AfyaSmart AI":"AfyaSmart AI","is a proposed digital system that uses Artificial Intelligence to support the delivery of preliminary health guidance. It is intended to give users a place to report symptoms, answer simple follow-up questions and access general health education.":"ni mfumo wa kidijitali unaopendekezwa unaotumia Akili Unde kusaidia kutoa mwongozo wa awali wa afya. Unalenga kuwapa watumiaji sehemu ya kuripoti dalili, kujibu maswali rahisi ya nyongeza na kupata elimu ya jumla ya afya.","For example, a person experiencing fever, headache, cough or abdominal pain may not know whether to monitor the symptoms, contact a health professional or seek urgent care. AfyaSmart aims to help organise the information they provide and explain possible next steps in clear language.":"Kwa mfano, mtu mwenye homa, maumivu ya kichwa, kikohozi au maumivu ya tumbo anaweza asijue kama afuatilie dalili, awasiliane na mtaalamu wa afya au atafute huduma ya haraka. AfyaSmart inalenga kupanga taarifa anazotoa na kueleza hatua zinazoweza kufuatwa kwa lugha rahisi.","The project focuses on accessibility, understandable information, symptom awareness and encouraging appropriate use of professional healthcare services.":"Mradi unalenga upatikanaji rahisi, taarifa zinazoeleweka, uelewa wa dalili na kuhamasisha matumizi sahihi ya huduma za kitaalamu za afya.","Project identity":"Utambulisho wa mradi","Project title:":"Jina la mradi:","AfyaSmart AI: An AI-Powered Digital System for Preliminary Health Guidance.":"AfyaSmart AI: Mfumo wa Kidijitali wa Kutoa Mwongozo wa Awali wa Afya kwa Kutumia Akili Unde.","Slogan:":"Kauli mbiu:","02 · The challenge":"02 · Changamoto","Why is AfyaSmart needed?":"Kwa nini AfyaSmart unahitajika?","People may face barriers when trying to understand health concerns and decide what to do next.":"Watu wanaweza kukumbana na vikwazo wanapojaribu kuelewa changamoto za kiafya na kuamua hatua inayofuata.","CHALLENGE 01":"CHANGAMOTO 01","Limited access to timely information":"Upatikanaji mdogo wa taarifa kwa wakati","Some people may have difficulty finding understandable health information when a concern first appears.":"Baadhi ya watu wanaweza kupata ugumu wa kupata taarifa za afya zinazoeleweka pale changamoto inapoanza.","CHALLENGE 02":"CHANGAMOTO 02","Uncertainty about symptoms":"Kutokuwa na uhakika kuhusu dalili","People may not know what information about their symptoms is important or whether they should seek care.":"Watu wanaweza wasijue ni taarifa zipi za dalili zao ni muhimu au kama wanapaswa kutafuta huduma za afya.","CHALLENGE 03":"CHANGAMOTO 03","Distance and time barriers":"Vikwazo vya umbali na muda","Travel, work, family responsibilities and distance from health facilities can make it harder to seek advice promptly.":"Safari, kazi, majukumu ya familia na umbali kutoka vituo vya afya vinaweza kufanya iwe vigumu kupata ushauri mapema.","CHALLENGE 04":"CHANGAMOTO 04","Confusing health information":"Taarifa za afya zinazochanganya","Information found online may be difficult to understand or may not come from reliable sources.":"Taarifa zinazopatikana mtandaoni zinaweza kuwa ngumu kuelewa au zisitoke kwenye vyanzo vinavyoaminika.","CHALLENGE 05":"CHANGAMOTO 05","Delayed decisions":"Kuchelewa kufanya maamuzi","Without clear guidance, a person may delay contacting a qualified health worker when assessment is needed.":"Bila mwongozo ulio wazi, mtu anaweza kuchelewa kuwasiliana na mhudumu wa afya mwenye sifa pale tathmini inapohitajika.","CHALLENGE 06":"CHANGAMOTO 06","Need for health awareness":"Hitaji la uelewa wa afya","People benefit from clear education about prevention, warning signs and appropriate healthcare options.":"Watu hunufaika na elimu iliyo wazi kuhusu kinga, dalili za hatari na njia sahihi za kupata huduma za afya.","A digital first step towards informed care.":"Hatua ya kwanza ya kidijitali kuelekea maamuzi sahihi ya huduma za afya.","AfyaSmart brings symptom reporting, preliminary information and health education together in one proposed platform.":"AfyaSmart unaunganisha uripoti wa dalili, taarifa za awali na elimu ya afya katika mfumo mmoja unaopendekezwa.","03 · Proposed solution":"03 · Suluhisho linalopendekezwa","How AfyaSmart responds to the challenge":"Jinsi AfyaSmart unavyokabiliana na changamoto","The platform is designed to guide users through a simple information process. It collects the details a user chooses to provide, presents general educational guidance and encourages professional assessment whenever appropriate.":"Mfumo umeundwa kuwaongoza watumiaji kupitia mchakato rahisi wa taarifa. Hukusanya maelezo ambayo mtumiaji amechagua kutoa, huwasilisha mwongozo wa jumla wa kielimu na kuhamasisha tathmini ya kitaalamu inapofaa.","Easy symptom reporting":"Kuripoti dalili kwa urahisi","Users can select symptoms and describe their concerns.":"Watumiaji wanaweza kuchagua dalili na kueleza changamoto zao.","Preliminary guidance":"Mwongozo wa awali","Users can review general information based on their responses.":"Watumiaji wanaweza kusoma taarifa za jumla kulingana na majibu yao.","Warning-sign awareness":"Uelewa wa dalili za hatari","The system highlights selected signs that need urgent attention.":"Mfumo unaonyesha dalili fulani zinazohitaji uangalizi wa haraka.","Health education":"Elimu ya afya","Users can explore basic information about health and prevention.":"Watumiaji wanaweza kupata taarifa za msingi kuhusu afya na kinga.","04 · User journey":"04 · Mchakato wa mtumiaji","How the system is intended to work":"Jinsi mfumo unavyotarajiwa kufanya kazi","A simple process from reporting a concern to considering the next step.":"Mchakato rahisi kuanzia kuripoti changamoto hadi kufikiria hatua inayofuata.","Open AfyaSmart":"Fungua AfyaSmart","The user visits the website using a phone, tablet or computer.":"Mtumiaji anafungua tovuti kwa kutumia simu, tableti au kompyuta.","Enter information":"Weka taarifa","The user reports age, symptoms, duration and how severe they feel.":"Mtumiaji anaweka umri, dalili, muda wa dalili na kiwango cha ukali wake.","Review guidance":"Soma mwongozo","The system presents preliminary educational information and safety advice based on the information entered.":"Mfumo unatoa taarifa za awali za kielimu na ushauri wa usalama kulingana na taarifa zilizowekwa.","Choose an appropriate next step":"Chagua hatua inayofaa inayofuata","The user is encouraged to contact a qualified health professional or seek urgent care when needed.":"Mtumiaji anahimizwa kuwasiliana na mtaalamu wa afya mwenye sifa au kutafuta huduma ya haraka inapohitajika.","05 · Project direction":"05 · Mwelekeo wa mradi","Main aim and objectives":"Lengo kuu na malengo mahususi","What the AfyaSmart project intends to achieve.":"Mambo ambayo mradi wa AfyaSmart unalenga kufanikisha.","Main aim":"Lengo kuu","To develop a digital system powered by Artificial Intelligence that provides preliminary health guidance and helps users access understandable health information and make informed decisions about seeking medical care.":"Kuunda mfumo wa kidijitali unaotumia Akili Unde kutoa mwongozo wa awali wa afya na kuwasaidia watumiaji kupata taarifa za afya zinazoeleweka na kufanya maamuzi sahihi kuhusu kutafuta huduma za matibabu.","Provide a convenient way for users to report common symptoms.":"Kutoa njia rahisi kwa watumiaji kuripoti dalili za kawaida.","Present clear preliminary health information based on user-provided details.":"Kuwasilisha taarifa za awali za afya zilizo wazi kulingana na maelezo ya mtumiaji.","Promote awareness of warning signs that may require urgent medical attention.":"Kuhamasisha uelewa wa dalili za hatari zinazoweza kuhitaji huduma ya haraka.","Improve access to general health education and prevention information.":"Kuboresha upatikanaji wa elimu ya jumla ya afya na taarifa za kinga.","Encourage timely consultation with qualified healthcare professionals.":"Kuhamasisha ushauri wa mapema kutoka kwa wataalamu wa afya wenye sifa.","06 · Platform capabilities":"06 · Uwezo wa mfumo","Key features of AfyaSmart AI":"Vipengele muhimu vya AfyaSmart AI","The following features describe the proposed platform and its intended functions.":"Vipengele vifuatavyo vinaeleza mfumo unaopendekezwa na kazi zake zilizokusudiwa.","FEATURE 01":"KIPENGELE 01","AI health guidance":"Mwongozo wa afya kwa kutumia AI","Provide preliminary educational guidance using information supplied by the user, subject to appropriate clinical review and validation.":"Kutoa mwongozo wa awali wa kielimu kwa kutumia taarifa zinazotolewa na mtumiaji, baada ya mapitio na uthibitishaji unaofaa wa kitaalamu wa afya.","FEATURE 02":"KIPENGELE 02","Symptom checker":"Kichunguzi cha dalili","Allow users to select symptoms, indicate duration and describe severity.":"Kuwawezesha watumiaji kuchagua dalili, kuonyesha muda wake na kueleza ukali wake.","FEATURE 03":"KIPENGELE 03","Emergency awareness":"Uelewa wa dharura","Draw attention to warning signs and direct users towards urgent medical help.":"Kuvuta umakini kwenye dalili za hatari na kuwaelekeza watumiaji kutafuta msaada wa haraka wa kitabibu.","FEATURE 04":"KIPENGELE 04","Share understandable general information about health topics and common concerns.":"Kushiriki taarifa za jumla zinazoeleweka kuhusu mada za afya na changamoto za kawaida.","FEATURE 05":"KIPENGELE 05","Disease prevention":"Kuzuia magonjwa","Provide educational material about hygiene, safe water, nutrition, vaccination and healthy habits.":"Kutoa elimu kuhusu usafi, maji salama, lishe, chanjo na tabia bora za kiafya.","FEATURE 06":"KIPENGELE 06","Healthcare direction":"Uelekezaji wa huduma za afya","Encourage users to seek the appropriate professional or health facility rather than relying on the website as a diagnosis.":"Kuwahimiza watumiaji kutafuta mtaalamu au kituo sahihi cha afya badala ya kutegemea tovuti kama utambuzi wa ugonjwa.","07 · Who it is for":"07 · Inawalenga nani","Intended users and stakeholders":"Watumiaji na wadau wanaolengwa","AfyaSmart is intended to support people seeking health information and the professionals who help them.":"AfyaSmart unalenga kusaidia watu wanaotafuta taarifa za afya pamoja na wataalamu wanaowahudumia.","Community members":"Wanajamii","People looking for understandable preliminary health information.":"Watu wanaotafuta taarifa za awali za afya zinazoeleweka.","People far from facilities":"Watu walio mbali na vituo vya afya","Individuals who may face travel or time barriers when seeking information.":"Watu wanaoweza kukumbana na vikwazo vya safari au muda wanapotafuta taarifa.","Caregivers and families":"Walezi na familia","People helping a family member understand when to seek medical advice.":"Watu wanaomsaidia mwanafamilia kuelewa wakati wa kutafuta ushauri wa kitabibu.","Healthcare professionals":"Wataalamu wa afya","Potential partners who can help review content and guide safe implementation.":"Washirika wanaoweza kusaidia kupitia maudhui na kuelekeza utekelezaji salama.","08 · Expected value":"08 · Thamani inayotarajiwa","Expected benefits and value":"Faida na thamani zinazotarajiwa","Potential benefits if the platform is properly developed, tested and implemented.":"Faida zinazoweza kupatikana ikiwa mfumo utaendelezwa, kupimwa na kutekelezwa ipasavyo.","More accessible information":"Taarifa zinazopatikana kwa urahisi","Users may be able to explore general health information through a digital platform.":"Watumiaji wanaweza kupata taarifa za jumla za afya kupitia mfumo wa kidijitali.","Better symptom awareness":"Uelewa bora wa dalili","A structured form can help users organise and communicate the symptoms they experience.":"Fomu iliyopangwa inaweza kuwasaidia watumiaji kupanga na kueleza dalili wanazopata.","Support for informed decisions":"Msaada wa kufanya maamuzi sahihi","Clear explanations may help users understand when professional advice is important.":"Maelezo yaliyo wazi yanaweza kuwasaidia watumiaji kuelewa wakati ushauri wa kitaalamu ni muhimu.","Prevention content can encourage awareness of healthy practices.":"Maudhui ya kinga yanaweza kuhamasisha uelewa wa tabia bora za kiafya.","Convenient access":"Upatikanaji rahisi","A responsive website can be accessed on different devices where internet access is available.":"Tovuti inayojibadilisha kulingana na kifaa inaweza kutumika kwenye vifaa mbalimbali pale intaneti inapopatikana.","Potential to grow":"Uwezekano wa kupanuka","The system could be expanded after user testing, clinical review and technical development.":"Mfumo unaweza kupanuliwa baada ya majaribio ya watumiaji, mapitio ya kitaalamu ya afya na maendeleo ya kiteknolojia.","09 · Trust and responsibility":"09 · Uaminifu na uwajibikaji","Safety, privacy and limitations":"Usalama, faragha na mipaka ya mfumo","Health technology must be clear about what it can and cannot do.":"Teknolojia ya afya lazima ieleze wazi mambo inayoweza na isiyoweza kufanya.","AfyaSmart AI is not a doctor and does not provide a confirmed diagnosis.":"AfyaSmart AI si daktari na haitoi utambuzi wa ugonjwa uliothibitishwa.","The website prototype demonstrates a possible user experience. Its sample symptom guidance is not a clinically validated AI model and should not be used to make medical decisions or delay treatment.":"Mfano huu wa tovuti unaonyesha namna mtumiaji anavyoweza kutumia mfumo. Mwongozo wa mfano kuhusu dalili si mfumo wa AI uliothibitishwa kitabibu na haupaswi kutumiwa kufanya maamuzi ya matibabu au kuchelewesha tiba.","Users should seek advice from qualified healthcare professionals for medical concerns.":"Watumiaji wanapaswa kutafuta ushauri wa wataalamu wa afya wenye sifa kuhusu changamoto za kiafya.","Possible emergency symptoms require immediate medical attention; users should not wait for a website response.":"Dalili zinazoweza kuashiria dharura zinahitaji huduma ya matibabu mara moja; watumiaji hawapaswi kusubiri majibu ya tovuti.","Before real-world launch, health content and triage logic need review by qualified medical professionals and appropriate testing.":"Kabla ya kuanza kutumika rasmi, maudhui ya afya na mantiki ya kupanga uharaka wa huduma vinahitaji kupitiwa na wataalamu wa afya wenye sifa na kufanyiwa majaribio yanayofaa.","Any collection of personal or health information must be protected through appropriate privacy, security and data-handling practices.":"Ukusanyaji wowote wa taarifa binafsi au za afya lazima ulindwe kwa taratibu zinazofaa za faragha, usalama na utunzaji wa taarifa.","The contact form in the current demonstration does not send messages to a server.":"Fomu ya mawasiliano katika mfano huu haitumi ujumbe kwenye seva.","10 · Development roadmap":"10 · Mpango wa maendeleo","What could come next?":"Nini kinaweza kufuata?","Possible future development areas. These are plans to explore, not features claimed to be live today.":"Maeneo yanayoweza kuendelezwa baadaye. Haya ni mipango ya kuchunguza, si vipengele vinavyodaiwa kuwa tayari vinafanya kazi.","Clinically reviewed AI":"AI iliyopitiwa na wataalamu wa afya","Develop and validate an AI guidance service with qualified healthcare professionals and reliable health references.":"Kuendeleza na kuthibitisha huduma ya mwongozo wa AI kwa kushirikiana na wataalamu wa afya wenye sifa na kutumia marejeo ya afya yanayoaminika.","Local language support":"Usaidizi wa lugha za ndani","Explore English and Kiswahili content to make information easier for more people to understand.":"Kuchunguza maudhui ya Kiingereza na Kiswahili ili watu wengi zaidi waweze kuelewa taarifa kwa urahisi.","Healthcare connections":"Ushirikiano na huduma za afya","Explore verified links to health facilities and trusted healthcare information services.":"Kuchunguza viungo vilivyothibitishwa vya vituo vya afya na huduma zinazoaminika za taarifa za afya.","Secure user accounts":"Akaunti salama za watumiaji","If needed, develop secure accounts and privacy controls with appropriate safeguards.":"Ikiwa itahitajika, kuunda akaunti salama na vidhibiti vya faragha vyenye ulinzi unaofaa.","Mobile-friendly access":"Matumizi rahisi kwenye simu","Continue improving performance and usability on common smartphones and slower connections.":"Kuendelea kuboresha utendaji na urahisi wa matumizi kwenye simu janja za kawaida na intaneti yenye kasi ndogo.","Testing and evaluation":"Majaribio na tathmini","Test usability, accuracy, safety, accessibility and usefulness before wider implementation.":"Kupima urahisi wa matumizi, usahihi, usalama, upatikanaji na manufaa kabla ya matumizi mapana.","11 · Frequently asked questions":"11 · Maswali yanayoulizwa mara kwa mara","Questions about AfyaSmart":"Maswali kuhusu AfyaSmart","Quick explanations of the project and its purpose.":"Maelezo mafupi kuhusu mradi na madhumuni yake.","Does AfyaSmart AI diagnose diseases?":"Je, AfyaSmart AI hutambua magonjwa?","No. It is designed for preliminary health information and guidance. It does not confirm a disease or replace a qualified healthcare professional.":"Hapana. Umeundwa kutoa taarifa na mwongozo wa awali wa afya. Hauthibitishi ugonjwa wala kuchukua nafasi ya mtaalamu wa afya mwenye sifa.","Who can use AfyaSmart?":"Nani anaweza kutumia AfyaSmart?","The proposed platform is intended for people seeking general health information, including community members and caregivers. Appropriate safeguards and professional advice remain important, especially for children and vulnerable people.":"Mfumo unaopendekezwa unalenga watu wanaotafuta taarifa za jumla za afya, wakiwemo wanajamii na walezi. Ulinzi unaofaa na ushauri wa kitaalamu ni muhimu, hasa kwa watoto na watu walio katika mazingira hatarishi.","Can AfyaSmart replace a hospital visit?":"Je, AfyaSmart inaweza kuchukua nafasi ya kwenda hospitalini?","No. It cannot examine a patient, run tests or provide treatment. Users should seek medical care when needed, and urgent warning signs require immediate attention.":"Hapana. Haiwezi kumchunguza mgonjwa, kufanya vipimo au kutoa matibabu. Watumiaji wanapaswa kutafuta huduma za afya inapohitajika, na dalili za hatari za dharura zinahitaji uangalizi wa haraka.","Is the current website connected to a real AI medical system?":"Je, tovuti ya sasa imeunganishwa na mfumo halisi wa AI wa kitabibu?","No. The current page is a project information website. Any demonstration symptom checker should be treated as a prototype, not a validated medical AI service.":"Hapana. Ukurasa huu ni tovuti ya kutoa taarifa kuhusu mradi. Kichunguzi chochote cha dalili kinachoonyeshwa kama mfano kinapaswa kuchukuliwa kuwa mfano wa majaribio, si huduma ya AI ya kitabibu iliyothibitishwa.","What makes the project useful?":"Ni nini kinachoufanya mradi huu kuwa na manufaa?","Its intended value is bringing symptom reporting, understandable preliminary information, health education and encouragement to seek professional care into one accessible digital experience.":"Thamani inayokusudiwa ni kuunganisha uripoti wa dalili, taarifa za awali zinazoeleweka, elimu ya afya na hamasa ya kutafuta huduma za kitaalamu katika mfumo mmoja wa kidijitali unaopatikana kwa urahisi.","12 · Project message":"12 · Ujumbe wa mradi","AfyaSmart AI — Smart Technology for Better Health.":"AfyaSmart AI — Teknolojia Bora kwa Afya Bora.","The goal is simple: help people access the right health information at the right time, while keeping qualified healthcare professionals at the centre of medical care.":"Lengo ni rahisi: kuwasaidia watu kupata taarifa sahihi za afya kwa wakati sahihi, huku wataalamu wa afya wenye sifa wakiendelea kuwa kiini cha huduma za matibabu.","AfyaSmart AI is a proposed AI-powered digital platform for preliminary health guidance. It aims to make health information more accessible, support symptom awareness, promote prevention education and encourage appropriate professional medical care.":"AfyaSmart AI ni mfumo wa kidijitali unaopendekezwa unaotumia AI kutoa mwongozo wa awali wa afya. Unalenga kurahisisha upatikanaji wa taarifa za afya, kusaidia uelewa wa dalili, kuhamasisha elimu ya kinga na kuhimiza upatikanaji sahihi wa huduma za kitaalamu za afya.","Location focus:":"Eneo linalolengwa:","Tanzania":"Tanzania","Smart Technology for Better Health, Right Information at the Right Time.":"Teknolojia Bora kwa Afya Bora, Taarifa Sahihi kwa Wakati Sahihi.","© 2026 AfyaSmart AI. All rights reserved.":"© 2026 AfyaSmart AI. Haki zote zimehifadhiwa.","Preliminary information only · Not a substitute for professional medical care.":"Taarifa za awali pekee · Hazichukui nafasi ya huduma za kitaalamu za afya."};
+const languageSelect = document.getElementById('languageSelect');
+const languageLabel = document.getElementById('languageLabel');
+function setLanguage(language) {
+  const useSwahili = language === 'sw';
+  document.documentElement.lang = useSwahili ? 'sw' : 'en';
+  document.title = useSwahili ? 'Kuhusu AfyaSmart AI | Muhtasari wa Mradi' : 'About AfyaSmart AI | Project Overview';
+  document.querySelector('meta[name="description"]').setAttribute('content', useSwahili
+    ? 'Jifunze kuhusu AfyaSmart AI, mfumo wa kidijitali unaopendekezwa kwa mwongozo wa awali wa afya, uelewa wa dalili na elimu ya afya.'
+    : 'Learn about AfyaSmart AI, a proposed digital platform for preliminary health guidance, symptom awareness and health education.');
+  const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+  let node;
+  while ((node = walker.nextNode())) {
+    if (node.parentElement.closest('script,style')) continue;
+    const original = node.nodeValue.trim();
+    if (!original) continue;
+    if (useSwahili && Object.prototype.hasOwnProperty.call(translations, original)) {
+      node.nodeValue = node.nodeValue.replace(original, translations[original]);
+    } else if (!useSwahili) {
+      const reverse = Object.entries(translations).find(([, sw]) => sw === original);
+      if (reverse) node.nodeValue = node.nodeValue.replace(original, reverse[0]);
+    }
+  }
+  languageLabel.textContent = useSwahili ? 'Lugha' : 'Language';
+  languageSelect.value = language;
+  try { localStorage.setItem('afyasmart-language', language); } catch (error) {}
+}
+languageSelect.addEventListener('change', () => setLanguage(languageSelect.value));
+let savedLanguage = 'en';
+try { savedLanguage = localStorage.getItem('afyasmart-language') || 'en'; } catch (error) {}
+setLanguage(savedLanguage === 'sw' ? 'sw' : 'en');
+</script>
+<script>
+const menu=document.getElementById('menu');
+const nav=document.getElementById('nav');
+menu.addEventListener('click',()=>{
+ const open=nav.classList.toggle('open');
+ menu.setAttribute('aria-expanded',String(open));
+ menu.textContent=open?'×':'☰';
+});
+nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
+ nav.classList.remove('open');menu.setAttribute('aria-expanded','false');menu.textContent='☰';
+}));
+</script>
+</body>
+</html>

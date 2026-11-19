@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Health Tech Developer &amp; Innovator — Portfolio &amp; Bio</title>
+  <meta name="description" content="Portfolio and biography of a Health Tech Developer & Innovator building accessible digital solutions for everyday healthcare guidance and AfyaSmart AI.">
+
+  <!-- Google Fonts: Newsreader for editorial gravitas, Plus Jakarta Sans for clean humanist UI -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Custom CSS Variables & Editorial Design System -->
+  <style>
+    :root {
+      --bg-canvas: #FAF9F6;
+      --bg-surface: #FFFFFF;
+      --bg-subtle: #F3F2EE;
+      --text-primary: #0F172A;
+      --text-secondary: #475569;
+      --text-muted: #64748B;
+      --accent-teal: #0F766E;
+      --accent-teal-hover: #115E59;
+      --accent-tint: #F0FDFA;
+      --border-hairline: #E2E8F0;
+      --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-serif: 'Newsreader', Georgia, serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: var(--bg-canvas);
+      color: var(--text-primary);
+      font-family: var(--font-sans);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .font-editorial {
+      font-family: var(--font-serif);
+    }
+
+    /* Hairline editorial dividers */
+    .hairline-t {
+      border-top: 1px solid var(--border-hairline);
+    }
+
+    .hairline-b {
+      border-bottom: 1px solid var(--border-hairline);
+    }
+
+    .hairline-all {
+      border: 1px solid var(--border-hairline);
+    }
+
+    /* Navigation active indicator */
+    .nav-link {
+      position: relative;
+      color: var(--text-secondary);
+      transition: color 0.2s ease;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: var(--text-primary);
+    }
+
+    .nav-link.active::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -4px;
+      height: 1.5px;
+      background-color: var(--accent-teal);
+    }
+
+    /* Understated card interaction */
+    .work-card {
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border-hairline);
+      transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .work-card:hover {
+      border-color: #CBD5E1;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 28px -12px rgba(15, 23, 42, 0.08);
+    }
+
+    /* Subtle entrance transition for sections */
+    .reveal-section {
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal-section.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal-section {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+      .work-card {
+        transition: none;
+      }
+    }
+  </style>
+</head>
+<body class="selection:bg-[#0F766E]/15 selection:text-[#0F766E]">
+
+  <!-- Skip to content link for keyboard accessibility -->
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-[#0F172A] focus:text-white focus:rounded-md text-sm font-medium">
+    Skip to main content
+  </a>
+
+  <!-- Minimalist Top Navigation -->
+  <header class="sticky top-0 z-40 bg-[#FAF9F6]/90 backdrop-blur-md hairline-b">
+    <div class="max-w-5xl mx-auto px-6 sm:px-8 h-16 flex items-center justify-between">
+      <a href="#top" class="flex items-center gap-2.5 group focus:outline-none">
+        <span class="w-2 h-2 rounded-full bg-[#0F766E] transition-transform duration-200 group-hover:scale-125" aria-hidden="true"></span>
+        <span class="font-semibold text-sm tracking-tight text-[#0F172A]">Catherine Daniel</span>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav aria-label="Primary Navigation" class="hidden md:flex items-center gap-8 text-sm font-medium">
+        <a href="#story" class="nav-link py-1">About</a>
+        <a href="#experience" class="nav-link py-1">Experience</a>
+        <a href="#work" class="nav-link py-1">Work</a>
+        <a href="#background" class="nav-link py-1">Background</a>
+        <a href="#contact" class="nav-link py-1">Contact</a>
+      </nav>
+
+      <!-- Mobile Menu Toggle -->
+      <button id="mobile-menu-btn" type="button" aria-expanded="false" aria-controls="mobile-nav" class="md:hidden p-2 -mr-2 text-[#475569] hover:text-[#0F172A] rounded-md focus:outline-none focus:ring-2 focus:ring-[#0F766E]/40">
+        <span class="sr-only">Toggle navigation menu</span>
+        <svg id="menu-icon-open" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M4 12h16M4 17h16" />
+        </svg>
+        <svg id="menu-icon-close" class="w-5 h-5 hidden" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <nav id="mobile-nav" aria-label="Mobile Navigation" class="hidden md:hidden bg-[#FAF9F6] hairline-b px-6 py-4">
+      <div class="flex flex-col space-y-3 text-sm font-medium">
+        <a href="#story" class="mobile-nav-link py-1.5 text-[#475569] hover:text-[#0F172A]">About</a>
+        <a href="#experience" class="mobile-nav-link py-1.5 text-[#475569] hover:text-[#0F172A]">Experience</a>
+        <a href="#work" class="mobile-nav-link py-1.5 text-[#475569] hover:text-[#0F172A]">Work</a>
+        <a href="#background" class="mobile-nav-link py-1.5 text-[#475569] hover:text-[#0F172A]">Background</a>
+        <a href="#contact" class="mobile-nav-link py-1.5 text-[#475569] hover:text-[#0F172A]">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <!-- 1. Hero Section -->
+    <section id="top" class="max-w-5xl mx-auto px-6 sm:px-8 pt-20 pb-20 sm:pt-28 sm:pb-28">
+      <div class="max-w-3xl">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#F0FDFA] border border-[#0F766E]/20 text-[#0F766E] text-xs font-semibold tracking-wide uppercase mb-7">
+          Health Tech Developer &amp; Innovator
+        </div>
+
+        <h1 class="font-editorial text-4xl sm:text-5xl lg:text-[3.4rem] font-normal tracking-tight text-[#0F172A] leading-[1.14] mb-6">
+          AfyaSmart — Building clear, accessible digital tools for everyday healthcare.
+        </h1>
+
+        <p class="text-lg sm:text-xl text-[#475569] leading-relaxed max-w-2xl mb-10 font-normal">
+          Focused on designing practical software that simplifies preliminary health guidance, organizes trustworthy medical information, and helps people save valuable time when seeking routine care.
+        </p>
+
+        <div class="flex flex-wrap items-center gap-4">
+          <a href="#work" class="inline-flex items-center justify-center px-6 py-3 rounded-lg bg-[#0F766E] text-white text-sm font-medium hover:bg-[#115E59] transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#0F766E]">
+            Explore Work
+          </a>
+          <a href="#contact" class="inline-flex items-center justify-center px-6 py-3 rounded-lg bg-white text-[#0F172A] hairline-all text-sm font-medium hover:bg-[#F3F2EE] transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#0F172A]">
+            Get in Touch
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Background Story Section -->
+    <section id="story" class="reveal-section max-w-5xl mx-auto px-6 sm:px-8 py-20 hairline-t">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
+        <div class="lg:col-span-4">
+          <p class="text-xs font-semibold uppercase tracking-widest text-[#0F766E] mb-2">01 / Purpose</p>
+          <h2 class="text-2xl font-semibold tracking-tight text-[#0F172A]">Background Story</h2>
+        </div>
+
+        <div class="lg:col-span-8 space-y-6">
+          <blockquote class="pl-5 sm:pl-6 border-l-2 border-[#0F766E]">
+            <p class="font-editorial italic text-2xl sm:text-[1.75rem] text-[#0F172A] leading-snug">
+              “My project has an idea of making easy medication without reaching to hospital in order to save time.”
+            </p>
+          </blockquote>
+
+          <div class="space-y-4 text-[#475569] text-base sm:text-[1.05rem] leading-relaxed">
+            <p>
+              For countless individuals, resolving a routine health question or understanding basic medication requires long travel, crowded waiting rooms, and hours away from work or family. That friction turns simple health needs into exhausting daily obstacles.
+            </p>
+            <p>
+              My work starts from a straightforward commitment: using practical web technology and structured AI to bring reliable preliminary guidance closer to people. By helping users navigate everyday health information clearly before deciding whether a clinical visit is necessary, digital tools can protect both patient time and healthcare resources.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Experience Section -->
+    <section id="experience" class="reveal-section max-w-5xl mx-auto px-6 sm:px-8 py-20 hairline-t">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
+        <div class="lg:col-span-4">
+          <p class="text-xs font-semibold uppercase tracking-widest text-[#0F766E] mb-2">02 / Practice</p>
+          <h2 class="text-2xl font-semibold tracking-tight text-[#0F172A]">Experience</h2>
+          <p class="text-sm text-[#64748B] mt-2 leading-relaxed">
+            Hands-on product building at the intersection of modern web engineering and accessible healthcare.
+          </p>
+        </div>
+
+        <div class="lg:col-span-8">
+          <div class="divide-y divide-[#E2E8F0]">
+            <!-- Role / Track 1 -->
+            <article class="pb-8">
+              <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 mb-2.5">
+                <h3 class="text-lg font-semibold text-[#0F172A]">Developing a Health Tech Solution</h3>
+                <span class="text-xs font-medium uppercase tracking-wider text-[#0F766E]">Product &amp; System Design</span>
+              </div>
+              <p class="text-[#475569] text-base leading-relaxed">
+                Designing user-centered digital workflows focused on accessible health support and time-saving patient tools. Translating everyday clinical navigation challenges into clear, step-by-step interfaces that anyone can understand on mobile or desktop devices.
+              </p>
+            </article>
+
+            <!-- Role / Track 2 -->
+            <article class="py-8">
+              <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 mb-2.5">
+                <h3 class="text-lg font-semibold text-[#0F172A]">Building Websites and Apps</h3>
+                <span class="text-xs font-medium uppercase tracking-wider text-[#64748B]">Front-End Engineering</span>
+              </div>
+              <p class="text-[#475569] text-base leading-relaxed">
+                Architecting responsive, fast-loading web applications from initial structure to deployment using semantic HTML, modern CSS, and clean JavaScript. Prioritizing reliability, readability, and low-bandwidth performance.
+              </p>
+            </article>
+
+            <!-- Role / Track 3 -->
+            <article class="pt-8">
+              <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 mb-2.5">
+                <h3 class="text-lg font-semibold text-[#0F172A]">Working on AfyaSmart AI Project</h3>
+                <span class="text-xs font-medium uppercase tracking-wider text-[#0F766E]">Lead Initiative</span>
+              </div>
+              <p class="text-[#475569] text-base leading-relaxed">
+                Leading the concept, interface design, and technical development of AfyaSmart AI—an applied digital health platform engineered to deliver structured preliminary health guidance and streamline everyday medication inquiries.
+              </p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Work Section (Selected Focus Areas) -->
+    <section id="work" class="reveal-section max-w-5xl mx-auto px-6 sm:px-8 py-20 hairline-t">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-12 gap-4">
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-widest text-[#0F766E] mb-2">03 / Focus Areas</p>
+          <h2 class="text-2xl font-semibold tracking-tight text-[#0F172A]">Selected Work</h2>
+        </div>
+        <p class="text-sm text-[#64748B] max-w-md">
+          Core pillars guiding the design and engineering of patient-first digital tools.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Card 1 -->
+        <article class="work-card rounded-xl p-7 flex flex-col justify-between">
+          <div>
+            <div class="w-9 h-9 rounded-lg bg-[#F0FDFA] border border-[#0F766E]/20 flex items-center justify-center text-[#0F766E] mb-6" aria-hidden="true">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-3-3v6m9-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <span class="block text-xs font-semibold uppercase tracking-wider text-[#64748B] mb-2">01 — Triage &amp; Clarity</span>
+            <h3 class="text-lg font-semibold text-[#0F172A] mb-3">Preliminary Health Guidance</h3>
+            <p class="text-sm text-[#475569] leading-relaxed">
+              Structured digital pathways designed to help individuals assess routine symptoms quickly and responsibly, supporting informed decisions without unnecessary hospital delays.
+            </p>
+          </div>
+          <div class="mt-8 pt-4 hairline-t flex items-center justify-between text-xs font-medium text-[#0F766E]">
+            <span>Patient-Centered Flow</span>
+            <span>Active Focus</span>
+          </div>
+        </article>
+
+        <!-- Card 2 -->
+        <article class="work-card rounded-xl p-7 flex flex-col justify-between">
+          <div>
+            <div class="w-9 h-9 rounded-lg bg-[#F0FDFA] border border-[#0F766E]/20 flex items-center justify-center text-[#0F766E] mb-6" aria-hidden="true">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+              </svg>
+            </div>
+            <span class="block text-xs font-semibold uppercase tracking-wider text-[#64748B] mb-2">02 — Knowledge Access</span>
+            <h3 class="text-lg font-semibold text-[#0F172A] mb-3">Digital Health Information</h3>
+            <p class="text-sm text-[#475569] leading-relaxed">
+              Clean, legible medical and medication reference interfaces built for clarity and trust—removing confusing jargon so users can read and act with confidence.
+            </p>
+          </div>
+          <div class="mt-8 pt-4 hairline-t flex items-center justify-between text-xs font-medium text-[#0F766E]">
+            <span>Accessible Content</span>
+            <span>Web Standard</span>
+          </div>
+        </article>
+
+        <!-- Card 3 -->
+        <article class="work-card rounded-xl p-7 flex flex-col justify-between">
+          <div>
+            <div class="w-9 h-9 rounded-lg bg-[#F0FDFA] border border-[#0F766E]/20 flex items-center justify-center text-[#0F766E] mb-6" aria-hidden="true">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
+            </div>
+            <span class="block text-xs font-semibold uppercase tracking-wider text-[#64748B] mb-2">03 — Flagship Platform</span>
+            <h3 class="text-lg font-semibold text-[#0F172A] mb-3">Innovative Health Solution</h3>
+            <p class="text-sm text-[#475569] leading-relaxed">
+              AfyaSmart AI—an accessible digital health solution combining modern web interfaces with intelligent assistance to streamline routine medication guidance and save time.
+            </p>
+          </div>
+          <div class="mt-8 pt-4 hairline-t flex items-center justify-between text-xs font-medium text-[#0F766E]">
+            <span>AfyaSmart AI</span>
+            <span>In Development</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 5, 6, 7. Education, Skills & Achievements Editorial Grid -->
+    <section id="background" class="reveal-section max-w-5xl mx-auto px-6 sm:px-8 py-20 hairline-t">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-12">
+
+        <!-- Left Column: Education & Achievements -->
+        <div class="lg:col-span-6 space-y-14">
+          <!-- 5. Education Section -->
+          <div>
+            <p class="text-xs font-semibold uppercase tracking-widest text-[#0F766E] mb-2">04 / Foundation</p>
+            <h2 class="text-2xl font-semibold tracking-tight text-[#0F172A] mb-5">Education &amp; Self-Driven Mastery</h2>
+            <div class="bg-white rounded-xl p-6 hairline-all">
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <h3 class="text-base font-semibold text-[#0F172A]">Primary Level Education &amp; Independent Study</h3>
+              </div>
+              <p class="text-sm text-[#475569] leading-relaxed mb-4">
+                Grounded in a primary level formal education background, with technical capability built through disciplined, self-directed learning, hands-on experimentation, and consistent daily practice in software development.
+              </p>
+              <p class="text-sm text-[#475569] leading-relaxed">
+                Rather than relying on conventional academic tracks, every skill—from writing clean front-end code to architecting health-focused AI workflows—has been earned through real problem solving and practical execution.
+              </p>
+            </div>
+          </div>
+
+          <!-- 7. Achievements Section -->
+          <div>
+            <p class="text-xs font-semibold uppercase tracking-widest text-[#0F766E] mb-2">05 / Milestones</p>
+            <h2 class="text-2xl font-semibold tracking-tight text-[#0F172A] mb-5">Achievements</h2>
+            <ul class="divide-y divide-[#E2E8F0] bg-white rounded-xl px-6 hairline-all">
+              <li class="py-4 flex items-start gap-3.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#0F766E] mt-2 shrink-0" aria-hidden="true"></span>
+                <div>
+                  <h3 class="text-sm font-semibold text-[#0F172A]">Web Development Skills Mastery</h3>
+                  <p class="text-xs text-[#64748B] mt-0.5">Independent mastery of modern front-end standards, responsive layouts, and clean user interface architecture.</p>
+                </div>
+              </li>
+              <li class="py-4 flex items-start gap-3.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#0F766E] mt-2 shrink-0" aria-hidden="true"></span>
+                <div>
+                  <h3 class="text-sm font-semibold text-[#0F172A]">Innovation in Health Tech</h3>
+                  <p class="text-xs text-[#64748B] mt-0.5">Translating real community healthcare bottlenecks into practical, time-saving digital concepts.</p>
+                </div>
+              </li>
+              <li class="py-4 flex items-start gap-3.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#0F766E] mt-2 shrink-0" aria-hidden="true"></span>
+                <div>
+                  <h3 class="text-sm font-semibold text-[#0F172A]">AfyaSmart AI Project Development</h3>
+                  <p class="text-xs text-[#64748B] mt-0.5">Conceptualizing and building an accessible AI-supported health guidance platform from the ground up.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Right Column: 6. Skills Section -->
+        <div class="lg:col-span-6">
+          <p class="text-xs font-semibold uppercase tracking-widest text-[#0F766E] mb-2">06 / Capabilities</p>
+          <h2 class="text-2xl font-semibold tracking-tight text-[#0F172A] mb-5">Skills</h2>
+
+          <div class="space-y-6">
+            <!-- Technical Skills -->
+            <div class="bg-white rounded-xl p-6 sm:p-7 hairline-all">
+              <div class="flex items-center justify-between mb-4">
+                <h3 class="text-base font-semibold text-[#0F172A]">Technical</h3>
+                <span class="text-xs font-medium text-[#64748B]">Core Web Stack</span>
+              </div>
+
+              <div class="space-y-4">
+                <div class="pb-3.5 hairline-b">
+                  <div class="flex items-center justify-between mb-1">
+                    <span class="text-sm font-semibold text-[#0F172A]">HTML</span>
+                    <span class="text-xs text-[#0F766E] font-medium">Semantic Structure</span>
+                  </div>
+                  <p class="text-xs text-[#475569] leading-relaxed">
+                    Clean, accessible, and well-structured document architecture optimized for clarity and searchability.
+                  </p>
+                </div>
+
+                <div class="pb-3.5 hairline-b">
+                  <div class="flex items-center justify-between mb-1">
+                    <span class="text-sm font-semibold text-[#0F172A]">CSS</span>
+                    <span class="text-xs text-[#0F766E] font-medium">Responsive Systems</span>
+                  </div>
+                  <p class="text-xs text-[#475569] leading-relaxed">
+                    Modern Grid and Flexbox layouts, refined typography scales, and adaptable mobile-first interfaces.
+                  </p>
+                </div>
+
+                <div>
+                  <div class="flex items-center justify-between mb-1">
+                    <span class="text-sm font-semibold text-[#0F172A]">JavaScript</span>
+                    <span class="text-xs text-[#0F766E] font-medium">Interactive Logic</span>
+                  </div>
+                  <p class="text-xs text-[#475569] leading-relaxed">
+                    Dynamic user workflows, clean DOM manipulation, and responsive client-side application behavior.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Core Competencies -->
+            <div class="bg-white rounded-xl p-6 sm:p-7 hairline-all">
+              <div class="flex items-center justify-between mb-4">
+                <h3 class="text-base font-semibold text-[#0F172A]">Core Competencies</h3>
+                <span class="text-xs font-medium text-[#64748B]">Execution &amp; Strategy</span>
+              </div>
+
+              <div class="space-y-4">
+                <div class="pb-3.5 hairline-b">
+                  <div class="flex items-center justify-between mb-1">
+                    <span class="text-sm font-semibold text-[#0F172A]">AI &amp; Problem Solving</span>
+                    <span class="text-xs text-[#0F766E] font-medium">Applied Innovation</span>
+                  </div>
+                  <p class="text-xs text-[#475569] leading-relaxed">
+                    Breaking down everyday healthcare access challenges and applying AI workflows to deliver practical, time-saving solutions.
+                  </p>
+                </div>
+
+                <div>
+                  <div class="flex items-center justify-between mb-1">
+                    <span class="text-sm font-semibold text-[#0F172A]">Communication</span>
+                    <span class="text-xs text-[#0F766E] font-medium">Clarity &amp; Empathy</span>
+                  </div>
+                  <p class="text-xs text-[#475569] leading-relaxed">
+                    Translating complex health and technical concepts into straightforward, human-centered language that builds user trust.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- 8. Footer / Contact Section -->
+  <footer id="contact" class="hairline-t bg-[#F3F2EE]/70">
+    <div class="max-w-5xl mx-auto px-6 sm:px-8 py-16 sm:py-20">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-8 pb-12 hairline-b">
+        <div class="max-w-lg">
+          <p class="text-xs font-semibold uppercase tracking-widest text-[#0F766E] mb-2">07 / Contact</p>
+          <h2 class="font-editorial text-3xl sm:text-4xl text-[#0F172A] tracking-tight mb-3">
+            Open to collaboration in digital health and web development.
+          </h2>
+          <p class="text-sm sm:text-base text-[#475569] leading-relaxed">
+            Whether discussing AfyaSmart AI, health technology partnerships, or front-end web projects, feel free to reach out directly.
+          </p>
+        </div>
+
+        <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+          <a href="mailto:catherinedaniel2412@gmail.com" class="inline-flex items-center justify-center px-5 py-3 rounded-lg bg-[#0F172A] text-white text-sm font-medium hover:bg-[#1E293B] transition-colors">
+         catherinedaniel2412@gmail.com
+          </a>
+          <button id="copy-email-btn" type="button" data-email="catherinedaniel2412@gmail.com" class="inline-flex items-center justify-center gap-2 px-4 py-3 rounded-lg bg-white text-[#0F172A] hairline-all text-sm font-medium hover:bg-[#FAF9F6] transition-colors focus:outline-none focus:ring-2 focus:ring-[#0F766E]/40">
+            <svg id="copy-icon" class="w-4 h-4 text-[#475569]" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+            </svg>
+            <span id="copy-label">Copy Email</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="pt-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs text-[#64748B]">
+        <p>&copy; 2026 Health Tech Developer &amp; Innovator. All rights reserved.</p>
+        <p>Built with semantic HTML, CSS, and JavaScript.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Subtle, Purposeful Vanilla JavaScript -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. Mobile Navigation Toggle
+      const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+      const mobileNav = document.getElementById('mobile-nav');
+      const iconOpen = document.getElementById('menu-icon-open');
+      const iconClose = document.getElementById('menu-icon-close');
+      const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+
+      if (mobileMenuBtn && mobileNav) {
+        mobileMenuBtn.addEventListener('click', () => {
+          const isExpanded = mobileMenuBtn.getAttribute('aria-expanded') === 'true';
+          mobileMenuBtn.setAttribute('aria-expanded', String(!isExpanded));
+          mobileNav.classList.toggle('hidden');
+          iconOpen.classList.toggle('hidden');
+          iconClose.classList.toggle('hidden');
+        });
+
+        mobileLinks.forEach((link) => {
+          link.addEventListener('click', () => {
+            mobileMenuBtn.setAttribute('aria-expanded', 'false');
+            mobileNav.classList.add('hidden');
+            iconOpen.classList.remove('hidden');
+            iconClose.classList.add('hidden');
+          });
+        });
+      }
+
+      // 2. Active Navigation Link Highlighting on Scroll
+      const sections = document.querySelectorAll('section[id], footer[id]');
+      const navLinks = document.querySelectorAll('.nav-link');
+
+      const updateActiveNav = () => {
+        const scrollPosition = window.scrollY + 140;
+
+        sections.forEach((section) => {
+          const top = section.offsetTop;
+          const height = section.offsetHeight;
+          const id = section.getAttribute('id');
+
+          if (scrollPosition >= top && scrollPosition < top + height) {
+            navLinks.forEach((link) => {
+              link.classList.remove('active');
+              if (link.getAttribute('href') === `#${id}`) {
+                link.classList.add('active');
+              }
+            });
+          }
+        });
+      };
+
+      window.addEventListener('scroll', updateActiveNav, { passive: true });
+      updateActiveNav();
+
+      // 3. Subtle IntersectionObserver Reveal
+      const revealElements = document.querySelectorAll('.reveal-section');
+      if ('IntersectionObserver' in window) {
+        const revealObserver = new IntersectionObserver(
+          (entries, observer) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+        );
+
+        revealElements.forEach((el) => revealObserver.observe(el));
+      } else {
+        revealElements.forEach((el) => el.classList.add('is-visible'));
+      }
+
+      // 4. One-Click Copy Email Utility (Iframe-safe fallback included)
+      const copyBtn = document.getElementById('copy-email-btn');
+      const copyLabel = document.getElementById('copy-label');
+
+      if (copyBtn && copyLabel) {
+        copyBtn.addEventListener('click', () => {
+          const email = copyBtn.getAttribute('data-email') || '';
+
+          const showCopiedFeedback = () => {
+            const originalText = copyLabel.textContent;
+            copyLabel.textContent = 'Copied';
+            copyBtn.classList.add('border-[#0F766E]', 'text-[#0F766E]');
+
+            setTimeout(() => {
+              copyLabel.textContent = originalText;
+              copyBtn.classList.remove('border-[#0F766E]', 'text-[#0F766E]');
+            }, 2200);
+          };
+
+          // Use textarea + execCommand for reliable cross-environment clipboard support
+          const tempInput = document.createElement('textarea');
+          tempInput.value = email;
+          tempInput.setAttribute('readonly', '');
+          tempInput.style.position = 'absolute';
+          tempInput.style.left = '-9999px';
+          document.body.appendChild(tempInput);
+          tempInput.select();
+
+          try {
+            document.execCommand('copy');
+            showCopiedFeedback();
+          } catch (err) {
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+              navigator.clipboard.writeText(email).then(showCopiedFeedback);
+            }
+          } finally {
+            document.body.removeChild(tempInput);
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>
